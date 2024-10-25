@@ -1,7 +1,6 @@
 import React from 'react';
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, useForm } from '@inertiajs/react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { useForm } from '@inertiajs/react';
 
 export default function ShowPost({ auth, post }) {
     const isAuthenticated = auth.user !== null;
@@ -47,7 +46,7 @@ export default function ShowPost({ auth, post }) {
                             Delete Post
                         </button>
                         <Link
-                            href={route('posts.index', post.id)}
+                            href={route('posts.edit', post.id)}
                             className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
                         >
                             Edit Post
