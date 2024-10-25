@@ -20,7 +20,7 @@ export default function AuthenticatedLayout({ header, children }) {
                         <ApplicationLogo className="block h-9 w-auto fill-current text-gray-200" />
                         <span className="ml-3 text-2xl font-bold text-blue-400">MyBlog</span>
                     </Link>
-                    
+
                     {/* Navigation Links */}
                     <div className="hidden sm:flex space-x-4">
                         <Link href="/dashboard" className="text-gray-300 hover:text-blue-400">

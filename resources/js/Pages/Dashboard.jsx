@@ -22,7 +22,7 @@ export default function Dashboard() {
                     <div className="overflow-hidden bg-gray-900 shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-100">
                             <h3 className="text-2xl font-bold text-blue-400 mb-4">Welcome, {user.name}!</h3>
-                            
+
                             {/* Navigation Links */}
                             <nav className="mb-6">
                                 <ul className="flex space-x-4">

@@ -39,21 +39,21 @@ export default function ShowPost({ auth, post }) {
         return (
             <AuthenticatedLayout>
                 {auth.user && auth.user.id === post.user_id && (
-    <div className="mt-4 flex justify-center space-x-4">
-        <button
-            onClick={handleDelete}
-            className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
-        >
-            Delete Post
-        </button>
-        <Link
-            href={route('posts.index', post.id)}
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-        >
-            Edit Post
-        </Link>
-    </div>
-)}
+                    <div className="mt-4 flex justify-center space-x-4">
+                        <button
+                            onClick={handleDelete}
+                            className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                        >
+                            Delete Post
+                        </button>
+                        <Link
+                            href={route('posts.index', post.id)}
+                            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                        >
+                            Edit Post
+                        </Link>
+                    </div>
+                )}
 
                 {content}
             </AuthenticatedLayout>
