@@ -27,7 +27,7 @@ export default function AuthenticatedLayout({ header, children }) {
                             Dashboard
                         </Link>
                         <Link href="/posts" className="text-gray-300 hover:text-blue-400">
-                            Posts
+                            My Posts
                         </Link>
                         <Link href="/posts/create" className="text-gray-300 hover:text-blue-400">
                             Create Post
@@ -94,7 +94,7 @@ export default function AuthenticatedLayout({ header, children }) {
                 <div className={showingNavigationDropdown ? 'block' : 'hidden'} sm:hidden>
                     <div className="space-y-1 pb-3 pt-2">
                         <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>Dashboard</ResponsiveNavLink>
-                        <ResponsiveNavLink href={route('posts.index')}>Posts</ResponsiveNavLink>
+                        <ResponsiveNavLink href={route('posts.index')}>My Posts</ResponsiveNavLink>
                         <ResponsiveNavLink href={route('posts.create')}>Create Post</ResponsiveNavLink>
                     </div>
                     <div className="border-t border-gray-600 pb-1 pt-4">
