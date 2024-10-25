@@ -8,6 +8,7 @@ use App\Models\Post;
 use Inertia\Inertia;
 use Inertia\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 
 class PostController extends Controller
 {
@@ -81,5 +82,21 @@ class PostController extends Controller
         // Fetch all users using the User model
         $posts = Post::all();
         return response()->json($posts);
+    }
+
+    public function destroy($id): RedirectResponse
+    {
+        $post = Post::findOrFail($id);
+
+        // Check if the authenticated user is the owner of the post
+        if ($post->user_id !== Auth::id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        // Delete the post
+        $post->delete();
+
+        // Redirect back to the posts index with a success message
+        return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
     }
 }
