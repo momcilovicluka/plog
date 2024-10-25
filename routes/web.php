@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 use App\Models\Post;
 
 Route::get('/', function () {
@@ -36,6 +37,9 @@ Route::middleware('auth')->group(function () {
         Route::delete('/{id}', [PostController::class, 'destroy'])->name('destroy');
         Route::get('/posts/{id}/edit', [PostController::class, 'edit'])->name('edit');
         Route::put('/posts/{id}', [PostController::class, 'update'])->name('update');
+    });
+    Route::prefix('/comments')->name('comments.')->group(function () {
+        Route::delete('/{id}', [CommentController::class, 'destroy'])->name('destroy');
     });
 });
 
