@@ -1,7 +1,12 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
+import { Head, usePage, Link } from '@inertiajs/react';
+import CreatePostForm from '@/Pages/Post/CreatePostForm';
+import BlogPostCard from '@/Pages/Post/BlogPostCard';
 
 export default function Dashboard() {
+    const user = usePage().props.auth.user;
+    const posts = usePage().props.posts;
+
     return (
         <AuthenticatedLayout
             header={
@@ -14,9 +19,21 @@ export default function Dashboard() {
 
             <div className="py-12">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg dark:bg-gray-800">
-                        <div className="p-6 text-gray-900 dark:text-gray-100">
-                            You're logged in!
+                    <div className="overflow-hidden bg-gray-900 shadow-sm sm:rounded-lg">
+                        <div className="p-6 text-gray-100">
+                            <h3 className="text-2xl font-bold text-blue-400 mb-4">Welcome, {user.name}!</h3>
+                            
+                            {/* Navigation Links */}
+                            <nav className="mb-6">
+                                <ul className="flex space-x-4">
+                                    <li>
+                                        <Link href="/posts" className="text-blue-300 hover:underline">View All Posts</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/posts/create" className="text-blue-300 hover:underline">Create New Post</Link>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                 </div>
