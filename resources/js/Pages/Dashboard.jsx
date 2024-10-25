@@ -27,7 +27,7 @@ export default function Dashboard() {
                             <nav className="mb-6">
                                 <ul className="flex space-x-4">
                                     <li>
-                                        <Link href="/posts" className="text-blue-300 hover:underline">View All Posts</Link>
+                                        <Link href="/posts" className="text-blue-300 hover:underline">My Posts</Link>
                                     </li>
                                     <li>
                                         <Link href="/posts/create" className="text-blue-300 hover:underline">Create New Post</Link>
