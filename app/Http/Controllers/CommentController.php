@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Post;
 use App\Models\Comment;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
@@ -22,5 +23,28 @@ class CommentController extends Controller
         }
 
         return redirect()->back()->with('error', 'You are not authorized to delete this comment.');
+    }
+
+    public function store(Request $request, $postId)
+    {
+        // Validate the incoming request
+        $request->validate([
+            'comment' => 'required|string|max:255',
+        ]);
+
+        // Find the post by ID
+        $post = Post::findOrFail($postId);
+
+        // Create a new comment instance
+        $comment = new Comment();
+        $comment->comment = $request->input('comment');
+        $comment->post_id = $post->id;
+        $comment->user_id = Auth::check() ? Auth::id() : -1; // Set user_id for authenticated users
+
+        // Save the comment
+        $comment->save();
+
+        // Redirect back to the post with a success message
+        return redirect()->route('posts.show', $postId)->with('success', 'Comment added successfully!');
     }
 }
