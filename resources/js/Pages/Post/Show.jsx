@@ -1,13 +1,21 @@
 import React from 'react';
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import { useForm } from '@inertiajs/react';
 
 export default function ShowPost({ auth, post }) {
     const isAuthenticated = auth.user !== null;
 
+    const { delete: destroy } = useForm();
+
+    const handleDelete = () => {
+        if (confirm('Are you sure you want to delete this post?')) {
+            destroy(route('posts.destroy', post.id));
+        }
+    };
+
     const content = (
         <div className="container mx-auto mt-8 bg-gray-900 p-6 rounded-lg shadow-lg">
-            <Head title={post.title} />
             <h1 className="text-3xl font-bold mb-4 text-gray-200">{post.title}</h1>
             <p className="text-gray-300 mb-6">{post.content}</p>
 
@@ -29,13 +37,24 @@ export default function ShowPost({ auth, post }) {
 
     if (isAuthenticated) {
         return (
-            <AuthenticatedLayout
-                header={
-                    <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-                        {post.title}
-                    </h2>
-                }
-            >
+            <AuthenticatedLayout>
+                {auth.user && auth.user.id === post.user_id && (
+    <div className="mt-4 flex justify-center space-x-4">
+        <button
+            onClick={handleDelete}
+            className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+        >
+            Delete Post
+        </button>
+        <Link
+            href={route('posts.index', post.id)}
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        >
+            Edit Post
+        </Link>
+    </div>
+)}
+
                 {content}
             </AuthenticatedLayout>
         );
