@@ -99,4 +99,44 @@ class PostController extends Controller
         // Redirect back to the posts index with a success message
         return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
     }
+
+    public function edit($id)
+{
+    $post = Post::findOrFail($id);
+    $user = Auth::user();
+
+    // Check if the authenticated user is the owner of the post
+    if ($post->user_id !== $user->id) {
+        abort(403, 'Unauthorized action.');
+    }
+
+    // Return the edit view with the post data
+    return Inertia::render('Post/Edit', [
+        'post' => $post,
+    ]);
+}
+
+public function update(Request $request, $id)
+{
+    $post = Post::findOrFail($id);
+    $user = Auth::user();
+
+    // Check if the authenticated user is the owner of the post
+    if ($post->user_id !== $user->id) {
+        abort(403, 'Unauthorized action.');
+    }
+
+    // Validate the incoming request data
+    $validatedData = $request->validate([
+        'title' => 'required|string|max:255',
+        'content' => 'required|string',
+    ]);
+
+    // Update the post with the validated data
+    $post->update($validatedData);
+
+    // Redirect back to the post view or a success page
+    return redirect()->route('posts.show', $post->id)
+        ->with('success', 'Post updated successfully.');
+}
 }
