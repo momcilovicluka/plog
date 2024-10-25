@@ -17,13 +17,15 @@ class UserSeeder extends Seeder
     {
         User::factory()->count(10)->create(); // Creates 10 random users
 
+        if (User::where('email', 'guest@gmail.com')->exists()) {
+            return;
+        }
+
         User::factory()->create([
             'id' => -1,
             'name' => 'Guest',
             'email' => 'guest@gmail.com',
-            'email_verified_at' => now(),
             'password' => Hash::make('password'),
-            'remember_token' => Str::random(10),
             'role' => 'user',
         ]);
     }
