@@ -38,7 +38,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/posts/{id}/edit', [PostController::class, 'edit'])->name('edit');
         Route::put('/posts/{id}', [PostController::class, 'update'])->name('update');
     });
+
     Route::prefix('/comments')->name('comments.')->group(function () {
+        Route::post('/', [CommentController::class, 'store'])->name('store');
         Route::delete('/{id}', [CommentController::class, 'destroy'])->name('destroy');
     });
 });
