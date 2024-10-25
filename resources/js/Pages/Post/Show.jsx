@@ -25,7 +25,7 @@ export default function ShowPost({ auth, post }) {
                 ) : (
                     post.comments.map((comment) => (
                         <li key={comment.id} className="bg-gray-800 p-4 rounded-lg shadow-md">
-                            <p className="text-gray-300">{comment.content}</p>
+                            <p className="text-gray-300">{comment.comment}</p>
                             <p className="text-gray-500 text-sm mt-1">{comment.created_at}</p>
                         </li>
                     ))
