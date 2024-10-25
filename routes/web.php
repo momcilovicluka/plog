@@ -41,7 +41,6 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::prefix('/comments')->name('comments.')->group(function () {
-        Route::post('/', [CommentController::class, 'store'])->name('store');
         Route::delete('/{id}', [CommentController::class, 'destroy'])->name('destroy');
     });
 });
