@@ -9,6 +9,7 @@ use Inertia\Inertia;
 use Inertia\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -89,9 +90,10 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
 
         // Check if the authenticated user is the owner of the post
-        if ($post->user_id !== Auth::id()) {
+        /* if ($post->user_id !== Auth::id()) {
             abort(403, 'Unauthorized action.');
-        }
+        } */
+       Gate::authorize('delete', $post);
 
         // Delete the post
         $post->delete();
@@ -106,9 +108,9 @@ class PostController extends Controller
     $user = Auth::user();
 
     // Check if the authenticated user is the owner of the post
-    if ($post->user_id !== $user->id) {
+    /* if ($post->user_id !== $user->id) {
         abort(403, 'Unauthorized action.');
-    }
+    } */
 
     // Return the edit view with the post data
     return Inertia::render('Post/Edit', [
@@ -120,11 +122,12 @@ public function update(Request $request, $id)
 {
     $post = Post::findOrFail($id);
     $user = Auth::user();
-
+    
     // Check if the authenticated user is the owner of the post
-    if ($post->user_id !== $user->id) {
+    /* if ($post->user_id !== $user->id) {
         abort(403, 'Unauthorized action.');
-    }
+        } */
+   Gate::authorize('update', $post);
 
     // Validate the incoming request data
     $validatedData = $request->validate([
