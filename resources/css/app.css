@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.neon-glow {
+    color: #fff;
+    text-shadow: 
+        0 0 5px #00e6e6, 
+        0 0 10px #00e6e6, 
+        0 0 20px #00e6e6, 
+        0 0 30px #00e6e6, 
+        0 0 40px #00e6e6, 
+        0 0 55px #00e6e6, 
+        0 0 75px #00e6e6;
+}
