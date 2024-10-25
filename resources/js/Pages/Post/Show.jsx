@@ -83,7 +83,7 @@ export default function ShowPost({ auth, post }) {
                                     {comment.user.name}
                                 </Link>
                             </p>
-                            {(auth.user && (auth.user.id === comment.user_id || auth.user.id === post.user_id)) && (
+                            {(auth.user && (auth.user.id === comment.user_id || auth.user.id === post.user_id || auth.user.role === 'admin')) && (
                                 <button
                                     onClick={() => handleDeleteComment(comment.id)}
                                     className="text-red-600 hover:text-red-500 mt-2"
@@ -101,22 +101,28 @@ export default function ShowPost({ auth, post }) {
     if (isAuthenticated) {
         return (
             <AuthenticatedLayout>
-                {auth.user && auth.user.id === post.user_id && (
-                    <div className="mt-4 flex justify-center space-x-4">
-                        <button
-                            onClick={handleDelete}
-                            className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
-                        >
-                            Delete Post
-                        </button>
-                        <Link
-                            href={route('posts.edit', post.id)}
-                            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                        >
-                            Edit Post
-                        </Link>
-                    </div>
-                )}
+                {auth.user && (
+    <div className="mt-4 flex justify-center space-x-4">
+        {/* Show Delete button for both admin and post owner */}
+        {(auth.user.role === 'admin' || auth.user.id === post.user_id) && (
+            <button
+                onClick={handleDelete}
+                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+            >
+                Delete Post
+            </button>
+        )}
+        {/* Show Edit button only for the post owner */}
+        {auth.user.id === post.user_id && (
+            <Link
+                href={route('posts.edit', post.id)}
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            >
+                Edit Post
+            </Link>
+        )}
+    </div>
+)}
 
                 {content}
             </AuthenticatedLayout>
