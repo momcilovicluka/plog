@@ -1,11 +1,9 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, usePage, Link } from '@inertiajs/react';
-import CreatePostForm from '@/Pages/Post/CreatePostForm';
-import BlogPostCard from '@/Pages/Post/BlogPostCard';
+import Footer from '@/Pages/Common/Footer';
 
 export default function Dashboard() {
     const user = usePage().props.auth.user;
-    const posts = usePage().props.posts;
 
     return (
         <AuthenticatedLayout
@@ -23,7 +21,6 @@ export default function Dashboard() {
                         <div className="p-6 text-gray-100">
                             <h3 className="text-2xl font-bold text-blue-400 mb-4">Welcome, {user.name}!</h3>
 
-                            {/* Navigation Links */}
                             <nav className="mb-6">
                                 <ul className="flex space-x-4">
                                     <li>
@@ -38,6 +35,7 @@ export default function Dashboard() {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </AuthenticatedLayout>
     );
 }
