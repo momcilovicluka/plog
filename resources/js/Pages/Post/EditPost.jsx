@@ -3,6 +3,7 @@ import { Head, usePage } from '@inertiajs/react';
 import { Inertia } from '@inertiajs/inertia';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import PostForm from '@/Pages/Post/PostForm';
+import Footer from '@/Pages/Common/Footer';
 
 export default function EditPost({ post }) {
     const [title, setTitle] = useState(post.title);
@@ -30,7 +31,7 @@ export default function EditPost({ post }) {
                 handleSubmit={handleSubmit} 
                 errors={errors} 
             />
-            </div>
+            </div><Footer />
         </AuthenticatedLayout>
     );
 }

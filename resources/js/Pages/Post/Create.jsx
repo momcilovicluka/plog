@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Inertia } from '@inertiajs/inertia';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import PostForm from '@/Pages/Post/PostForm';
+import Footer from '@/Pages/Common/Footer';
 
 export default function Create() {
     const [title, setTitle] = useState('');
@@ -41,7 +42,7 @@ export default function Create() {
                 handleSubmit={handleSubmit} 
                 errors={errors} 
             />
-            </div>
+            </div><Footer />
         </AuthenticatedLayout>
     );
 }

@@ -5,6 +5,7 @@ import PostActions from '@/Pages/Post/PostActions';
 import PostDetails from '@/Pages/Post/PostDetails';
 import CommentForm from '@/Pages/Comment/CommentForm';
 import CommentItem from '@/Pages/Comment/CommentItem';
+import Footer from '@/Pages/Common/Footer';
 
 export default function ShowPost({ auth, post }) {
     const isAuthenticated = auth.user !== null;
@@ -72,6 +73,7 @@ export default function ShowPost({ auth, post }) {
                     ))
                 )}
             </ul>
+            <Footer />
         </div>
     );
 
