@@ -19,7 +19,7 @@ Make sure you have the following installed on your machine:
 - [Node.js](https://nodejs.org/) 🧩
 - [NPM](https://www.npmjs.com/) 📦
 
-For a quick guide of how to install, laravel has great instructions:
+For a quick guide on how to install, laravel has great instructions:
 [Guide](https://laravel.com/docs/11.x/installation#installing-php)
 
 ---
