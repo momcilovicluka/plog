@@ -13,3 +13,12 @@
         0 0 55px #00e6e6, 
         0 0 75px #00e6e6;
 }
+
+.post-item {
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.post-item:hover {
+    box-shadow: 0 0 20px rgba(0, 102, 255, 0.5);
+    transform: translateY(-5px);
+}
