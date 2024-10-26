@@ -90,7 +90,10 @@ php artisan serve
 ```bash
 docker compose up
 ```
-You can also use the prebuilt image from [DockerHub](https://hub.docker.com/repository/docker/momcilovicluka/plog/general)
+You can also use the prebuilt image from [DockerHub](https://hub.docker.com/r/momcilovicluka/plog) with
+```bash
+docker pull momcilovicluka/plog
+```
 
 ---
 
