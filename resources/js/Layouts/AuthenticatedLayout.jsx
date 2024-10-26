@@ -1,6 +1,5 @@
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import Dropdown from '@/Components/Dropdown';
-import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
@@ -12,16 +11,15 @@ export default function AuthenticatedLayout({ header, children }) {
 
     return (
         <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
-            {/* Navigation Bar */}
+
             <nav className="bg-gray-800 p-4 shadow-md">
                 <div className="container mx-auto flex justify-between items-center">
-                    {/* Logo Section */}
+
                     <Link href="/" className="flex items-center">
                         <ApplicationLogo className="block h-9 w-auto fill-current text-gray-200" />
-                        <span className="ml-3 text-2xl font-bold text-blue-400">MyBlog</span>
+                        <span className="ml-3 text-2xl font-bold text-blue-400">Plog</span>
                     </Link>
 
-                    {/* Navigation Links */}
                     <div className="hidden sm:flex space-x-4">
                         <Link href="/dashboard" className="text-gray-300 hover:text-blue-400">
                             Dashboard
@@ -34,7 +32,6 @@ export default function AuthenticatedLayout({ header, children }) {
                         </Link>
                     </div>
 
-                    {/* User Dropdown */}
                     <div className="relative">
                         <Dropdown>
                             <Dropdown.Trigger>
@@ -64,7 +61,6 @@ export default function AuthenticatedLayout({ header, children }) {
                         </Dropdown>
                     </div>
 
-                    {/* Mobile Navigation Button */}
                     <div className="-mr-2 flex sm:hidden">
                         <button
                             onClick={() => setShowingNavigationDropdown(previous => !previous)}
@@ -90,7 +86,6 @@ export default function AuthenticatedLayout({ header, children }) {
                     </div>
                 </div>
 
-                {/* Mobile Dropdown Menu */}
                 <div className={showingNavigationDropdown ? 'block' : 'hidden'} sm:hidden>
                     <div className="space-y-1 pb-3 pt-2">
                         <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>Dashboard</ResponsiveNavLink>
@@ -110,7 +105,6 @@ export default function AuthenticatedLayout({ header, children }) {
                 </div>
             </nav>
 
-            {/* Header Section */}
             {header && (
                 <header className="bg-gray-800 shadow dark:bg-gray-900">
                     <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
@@ -119,7 +113,6 @@ export default function AuthenticatedLayout({ header, children }) {
                 </header>
             )}
 
-            {/* Main Content */}
             <main>{children}</main>
         </div>
     );
