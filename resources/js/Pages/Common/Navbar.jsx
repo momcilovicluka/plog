@@ -4,17 +4,16 @@ import { Link } from '@inertiajs/react';
 export default function Navbar({ auth }) {
     return (
         <header className="w-full max-w-4xl mx-auto px-4 py-8 flex justify-between items-center">
-            {/* Logo or Title */}
+
             <div className="flex items-center space-x-3 text-2xl font-semibold tracking-wide">
                 <Link
                     href="/"
                     className="text-blue-600 dark:text-blue-400 hover:opacity-75 transition duration-300"
                 >
-                    MyBlog
+                    Plog
                 </Link>
             </div>
 
-            {/* Navigation */}
             <nav className="-mx-3 flex flex-1 justify-end">
                 {auth.user ? (
                     <Link
