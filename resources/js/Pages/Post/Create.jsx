@@ -17,7 +17,6 @@ export default function Create() {
         }, {
             onError: (error) => setErrors(error),
             onSuccess: () => {
-                // Clear the form on success
                 setTitle('');
                 setContent('');
             }
