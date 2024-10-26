@@ -1,7 +1,7 @@
 // resources/js/Pages/Welcome.jsx
 
 import React from 'react';
-import { Head, Link } from '@inertiajs/react';
+import { Head } from '@inertiajs/react';
 import Navbar from '@/Pages/Common/Navbar';
 import Footer from '@/Pages/Common/Footer';
 import PostItem from './Post/PostItem';
