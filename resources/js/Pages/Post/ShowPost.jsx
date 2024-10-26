@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useForm } from '@inertiajs/react';
+import { useForm } from '@inertiajs/react';
 import Navbar from '@/Pages/Common/Navbar';
 import PostActions from '@/Pages/Post/PostActions';
 import PostDetails from '@/Pages/Post/PostDetails';
