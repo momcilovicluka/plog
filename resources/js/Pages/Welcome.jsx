@@ -1,5 +1,3 @@
-// resources/js/Pages/Welcome.jsx
-
 import React from 'react';
 import { Head } from '@inertiajs/react';
 import Navbar from '@/Pages/Common/Navbar';
