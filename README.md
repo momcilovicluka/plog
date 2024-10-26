@@ -86,13 +86,12 @@ php artisan db:seed
 php artisan serve
 ```
 
-### Run it with sail:
 Although it can be run with docker, it is recommended to run it with sail ⛵
 ```bash
 ./vendor/bin/sail up
 ```
 
-### You can also run it with docker 🐳:
+You can also run it with docker if you're really keen 🐳:
 ```bash
 docker compose up
 ```
