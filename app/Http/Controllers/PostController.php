@@ -13,21 +13,17 @@ use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
-    // List all posts
     public function index(): Response
     {
         try {
             $userid = Auth::id();
 
-            // If the user is authenticated, get only their posts
             if ($userid) {
                 $posts = Post::where('user_id', $userid)->get();
             } else {
-                // If not authenticated, get all posts
                 $posts = Post::all();
             }
         } catch (\Exception $e) {
-            // In case of any errors, get all posts as a fallback
             $posts = Post::all();
         }
 
@@ -36,7 +32,6 @@ class PostController extends Controller
         ]);
     }
 
-    // Show the form to create a new post
     public function create(): Response
     {
         return Inertia::render('Post/Create');
@@ -62,7 +57,7 @@ class PostController extends Controller
     {
         $post = Post::with(['comments.user', 'user'])->findOrFail($id);
 
-        return Inertia::render('Post/Show', [
+        return Inertia::render('Post/ShowPost', [
             'post' => $post,
         ]);
     }
@@ -78,68 +73,40 @@ class PostController extends Controller
         );
     }
 
-    public function all()
-    {
-        // Fetch all users using the User model
-        $posts = Post::all();
-        return response()->json($posts);
-    }
-
     public function destroy($id): RedirectResponse
     {
         $post = Post::findOrFail($id);
 
-        // Check if the authenticated user is the owner of the post
-        /* if ($post->user_id !== Auth::id()) {
-            abort(403, 'Unauthorized action.');
-        } */
-       Gate::authorize('delete', $post);
+        Gate::authorize('delete', $post);
 
-        // Delete the post
         $post->delete();
 
-        // Redirect back to the posts index with a success message
         return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
     }
 
     public function edit($id)
-{
-    $post = Post::findOrFail($id);
-    $user = Auth::user();
+    {
+        $post = Post::findOrFail($id);
 
-    // Check if the authenticated user is the owner of the post
-    /* if ($post->user_id !== $user->id) {
-        abort(403, 'Unauthorized action.');
-    } */
+        return Inertia::render('Post/EditPost', [
+            'post' => $post,
+        ]);
+    }
 
-    // Return the edit view with the post data
-    return Inertia::render('Post/Edit', [
-        'post' => $post,
-    ]);
-}
+    public function update(Request $request, $id)
+    {
+        $post = Post::findOrFail($id);
 
-public function update(Request $request, $id)
-{
-    $post = Post::findOrFail($id);
-    $user = Auth::user();
-    
-    // Check if the authenticated user is the owner of the post
-    /* if ($post->user_id !== $user->id) {
-        abort(403, 'Unauthorized action.');
-        } */
-   Gate::authorize('update', $post);
+        Gate::authorize('update', $post);
 
-    // Validate the incoming request data
-    $validatedData = $request->validate([
-        'title' => 'required|string|max:255',
-        'content' => 'required|string',
-    ]);
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+        ]);
 
-    // Update the post with the validated data
-    $post->update($validatedData);
+        $post->update($validatedData);
 
-    // Redirect back to the post view or a success page
-    return redirect()->route('posts.show', $post->id)
-        ->with('success', 'Post updated successfully.');
-}
+        return redirect()->route('posts.show', $post->id)
+            ->with('success', 'Post updated successfully.');
+    }
 }
