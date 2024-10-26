@@ -1,3 +1,97 @@
+<div align="center">
+    <h1><b>Plog</b></h1>
+    <h3>A blog app made with Laravel and react. 🔥 </h3>
+    
+![GitHub Repo stars](https://img.shields.io/github/stars/momcilovicluka/plog?style=for-the-badge&color=ff0050) 
+![GitHub last commit](https://img.shields.io/github/last-commit/momcilovicluka/plog?style=for-the-badge&color=ff0050) 
+![GitHub repo size](https://img.shields.io/github/repo-size/momcilovicluka/plog?style=for-the-badge&color=ff0050)
+</div>
+
+
+# 🚀 Setup Guide
+## 🛠 Prerequisites
+
+Make sure you have the following installed on your machine:
+
+- [PHP](https://www.php.net/downloads) 🐘
+- [Composer](https://getcomposer.org/) 🎻
+- [Laravel Installer](https://github.com/laravel/installer) 🐛
+- [Node.js](https://nodejs.org/) 🧩
+- [NPM](https://www.npmjs.com/) 📦
+
+For a quick guide of how to install, laravel has great instructions:
+[Guide](https://laravel.com/docs/11.x/installation#installing-php)
+
+---
+
+## ⚡️ Getting Started
+
+Follow these steps to set up and run the Laravel application locally.
+
+### 1. Clone the Repository 📂
+- 1.1 With git:
+```bash
+git clone https://github.com/momcilovicluka/plog.git
+```
+or
+- 1.2 With GitHub cli:
+```bash
+gh repo clone momcilovicluka/plog
+```
+
+### 2. Navigate to the Project Directory 📁
+```bash
+cd plog
+```
+
+### 3. Install Dependencies 🚀
+Install the PHP dependencies using Composer and node deps with npm:
+```bash
+composer install
+npm install
+```
+Then compile the assets:
+```bash
+npm run build
+```
+
+### 4. Set Up Environment Variables 🌍
+Create a .env file by copying the example:
+```bash
+cp .env.example .env
+```
+
+### 5. Generate Application Key 🔑
+Run the following command to generate an encryption key for your application:
+```bash
+php artisan key:generate
+```
+
+### 6. Set up Database 💿
+Create a SQLite database file:
+```bash
+touch database/database.sqlite
+```
+Run migrations to create tables:
+```bash
+php artisan migrate:fresh
+```
+Run seeders to populate the tables with mock data:
+```bash
+php artisan db:seed
+```
+
+### 7. Run the application! 💨
+```bash
+php artisan serve
+```
+
+## You can also run it with docker 🐳:
+```bash
+docker compose up
+```
+You can also use the prebuilt image from [DockerHub](https://hub.docker.com/repository/docker/momcilovicluka/plog/general)
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
