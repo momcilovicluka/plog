@@ -14,7 +14,7 @@ export default function Welcome({ auth, posts = [] }) {
             <div className="bg-gray-100 text-gray-700 dark:bg-gray-900 dark:text-gray-200">
 
                 <div className="relative flex flex-col items-center justify-center min-h-screen px-6 selection:bg-blue-600 selection:text-white">
-                {auth.user ? null : <Navbar auth={auth} />}
+                    {auth.user ? null : <Navbar auth={auth} />}
 
                     <main className="flex flex-col items-center space-y-6 mt-10">
                         <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 text-center">
@@ -38,7 +38,7 @@ export default function Welcome({ auth, posts = [] }) {
                         </div>
                     </main>
 
-                    <Footer/>
+                    <Footer />
                 </div>
             </div>
         </>
