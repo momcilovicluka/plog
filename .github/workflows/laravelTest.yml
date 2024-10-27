@@ -12,6 +12,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Cache dependencies
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache
+        key: ${{ runner.os }}-cache-${{ hashFiles('**/lockfiles') }}}
+    
     - name: Setup PHP
       uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
