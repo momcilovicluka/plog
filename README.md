@@ -81,16 +81,19 @@ Run seeders to populate the tables with mock data:
 php artisan db:seed
 ```
 
-### 7. Run the application! 💨
+### 7. Test the application! 🧪
+```bash
+php artisan test
+```
+
+### 8. Run the application! 💨
 ```bash
 php artisan serve
 ```
-
 Although it can be run with docker, it is recommended to run it with sail ⛵
 ```bash
 ./vendor/bin/sail up
 ```
-
 You can also run it with docker if you're really keen 🐳:
 ```bash
 docker compose up
