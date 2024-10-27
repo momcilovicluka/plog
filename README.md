@@ -82,6 +82,14 @@ php artisan db:seed
 ```
 
 ### 7. Test the application! 🧪
+Before running the tests, make sure to createa a db file dedicated to testing.
+
+Failing to do so will force the tests to run on default database resulting in an ***empty database after testing***.
+
+You can create a db file for testing like so(it's already linked in ***env.testing***):
+```bash
+touch database/testing.sqlite
+```
 To run all the tests use:
 ```bash
 php artisan test
