@@ -22,8 +22,8 @@ class CommentFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(), // Generates a new user by default
-            'post_id' => Post::factory(), // Generates a new post by default
+            'user_id' => User::factory(),
+            'post_id' => Post::factory(),
             'comment' => $this->faker->sentence(),
             'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
         ];
