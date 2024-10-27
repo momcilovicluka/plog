@@ -23,6 +23,7 @@ export default function PostForm({ title, setTitle, content, setContent, handleS
                 <textarea
                     id="content"
                     value={content}
+                    rows={10}
                     onChange={(e) => setContent(e.target.value)}
                     className="mt-1 block w-full rounded-md border-gray-600 bg-gray-700 text-white shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 sm:text-sm"
                 />
