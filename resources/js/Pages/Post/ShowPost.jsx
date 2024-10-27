@@ -89,7 +89,7 @@ export default function ShowPost({ auth, post }) {
     }
 
     return (
-        <div className="bg-gray-800 min-h-screen text-gray-200 p-6">
+        <div className="bg-gray-900 min-h-screen text-gray-200 p-6">
             <Navbar auth={auth} />
             {content}
         </div>
