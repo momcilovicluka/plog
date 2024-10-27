@@ -16,12 +16,12 @@ class CommentSeeder extends Seeder
         foreach ($posts as $post) {
             $userIds = User::pluck('id')->shuffle()->take(rand(2, 5));
 
-    foreach ($userIds as $userId) {
-        Comment::factory()->create([
-            'post_id' => $post->id,
-            'user_id' => $userId,
-        ]);
-    }
+            foreach ($userIds as $userId) {
+                Comment::factory()->create([
+                    'post_id' => $post->id,
+                    'user_id' => $userId,
+                ]);
+            }
         }
     }
 }
