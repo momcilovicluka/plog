@@ -7,13 +7,15 @@
 name: Lint Code Base
 
 on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+  workflow_run:
+    workflows: ["Laravel Test & Format"]
+    types:
+      - completed
 jobs:
   run-lint:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
+    
     steps:
       - name: Cache dependencies
         uses: actions/cache@v4
