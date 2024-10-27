@@ -49,7 +49,9 @@ jobs:
         php artisan db:seed
 
     - name: Execute tests (Unit and Feature tests) via PHPUnit/Pest
-      run: php artisan test
+      run: |
+        touch database/testing.sqlite
+        php artisan test
 
     - name: Run Pint
       run: composer exec pint
