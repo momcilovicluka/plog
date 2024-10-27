@@ -88,6 +88,8 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
+        Gate::authorize('update', $post);
+
         return Inertia::render('Post/EditPost', [
             'post' => $post,
         ]);
