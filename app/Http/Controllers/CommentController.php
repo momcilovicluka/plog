@@ -6,6 +6,7 @@ use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class CommentController extends Controller
 {
@@ -13,13 +14,11 @@ class CommentController extends Controller
     {
         $comment = Comment::findOrFail($id);
 
-        if (Auth::user()->id === $comment->user_id || Auth::user()->id === $comment->post->user_id) {
-            $comment->delete();
+        Gate::authorize('delete', $comment);
 
-            return redirect()->back()->with('success', 'Comment deleted successfully.');
-        }
+        $comment->delete();
 
-        return redirect()->back()->with('error', 'You are not authorized to delete this comment.');
+        return redirect()->back()->with('success', 'Comment deleted successfully.');
     }
 
     public function store(Request $request, $postId)
