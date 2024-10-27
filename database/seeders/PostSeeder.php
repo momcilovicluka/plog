@@ -1,4 +1,5 @@
 <?php
+
 namespace Database\Seeders;
 
 use App\Models\Post;
@@ -18,4 +19,3 @@ class PostSeeder extends Seeder
         }
     }
 }
-

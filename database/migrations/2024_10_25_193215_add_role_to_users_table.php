@@ -10,19 +10,19 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up()
-{
-    Schema::table('users', function (Blueprint $table) {
-        if (Schema::hasColumn('users', 'role')) {
-            return;
-        }
-        $table->string('role')->default('user'); // Default role is 'user'
-    });
-}
+    {
+        Schema::table('users', function (Blueprint $table) {
+            if (Schema::hasColumn('users', 'role')) {
+                return;
+            }
+            $table->string('role')->default('user'); // Default role is 'user'
+        });
+    }
 
-public function down()
-{
-    Schema::table('users', function (Blueprint $table) {
-        $table->dropColumn('role');
-    });
-}
+    public function down()
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('role');
+        });
+    }
 };

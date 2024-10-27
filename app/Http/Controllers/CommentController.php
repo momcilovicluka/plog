@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +13,7 @@ class CommentController extends Controller
     {
         // Retrieve the comment by ID
         $comment = Comment::findOrFail($id);
-        
+
         // Check if the authenticated user is the owner of the comment or the owner of the post
         if (Auth::user()->id === $comment->user_id || Auth::user()->id === $comment->post->user_id) {
             // Delete the comment
@@ -36,7 +36,7 @@ class CommentController extends Controller
         $post = Post::findOrFail($postId);
 
         // Create a new comment instance
-        $comment = new Comment();
+        $comment = new Comment;
         $comment->comment = $request->input('comment');
         $comment->post_id = $post->id;
         $comment->user_id = Auth::check() ? Auth::id() : -1; // Set user_id for authenticated users

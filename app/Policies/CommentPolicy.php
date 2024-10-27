@@ -20,12 +20,12 @@ class CommentPolicy
         return $user->id === $comment->user_id || $user->id === $comment->post->user_id || $user->role === 'admin' ? Response::allow() : Response::deny('You are not authorized to delete this comment.');
     }
 
-    public function before(User $user, string $ability): bool|null
-{
-    if ($user->role === 'admin') {
-        return true;
+    public function before(User $user, string $ability): ?bool
+    {
+        if ($user->role === 'admin') {
+            return true;
+        }
+
+        return null;
     }
- 
-    return null;
-}
 }
