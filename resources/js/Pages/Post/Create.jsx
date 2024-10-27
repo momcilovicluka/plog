@@ -25,13 +25,7 @@ export default function Create() {
     };
 
     return (
-        <AuthenticatedLayout
-            header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-200">
-                    Dashboard
-                </h2>
-            }
-        >
+        <AuthenticatedLayout>
             <div className="container mx-auto mt-8">
                 <h1 className="text-3xl font-bold mb-4 text-blue-400">Create a New Post</h1>
                 <PostForm 
