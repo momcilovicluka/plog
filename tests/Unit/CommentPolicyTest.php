@@ -18,7 +18,7 @@ class CommentPolicyTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->commentPolicy = new CommentPolicy();
+        $this->commentPolicy = new CommentPolicy;
     }
 
     public function test_owner_can_update_comment()
