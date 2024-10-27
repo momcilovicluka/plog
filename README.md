@@ -82,8 +82,17 @@ php artisan db:seed
 ```
 
 ### 7. Test the application! 🧪
+To run all the tests use:
 ```bash
 php artisan test
+```
+To run only unit tests:
+```bash
+php artisan test --testsuite=Unit
+```
+To run only feature tests:
+```bash
+php artisan test --testsuite=Feature
 ```
 
 ### 8. Run the application! 💨
