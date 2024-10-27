@@ -32,10 +32,16 @@ class PostPolicyTest extends TestCase
 
     public function test_non_owner_cannot_update_post()
     {
-        $nonOwnerUser = User::factory()->create(['role' => 'user']);
-        $post = Post::factory()->create(['user_id' => 2]);
+        $owner = User::factory()->create();
+        $nonOwner = User::factory()->create();
 
-        $response = $this->postPolicy->update($nonOwnerUser, $post);
+        $post = Post::factory()->create([
+            'user_id' => $owner->id,
+            'title' => 'Sample Post',
+            'content' => 'Sample content.',
+        ]);
+
+        $response = $this->postPolicy->update($nonOwner, $post);
 
         $this->assertFalse($response->allowed());
         $this->assertEquals('You do not own this post.', $response->message());
@@ -61,12 +67,18 @@ class PostPolicyTest extends TestCase
         $this->assertTrue($response->allowed());
     }
 
-    public function test_non_owner_cannot_delete_post()
+    public function non_owner_cannot_delete_post()
     {
-        $nonOwnerUser = User::factory()->create(['role' => 'user']);
-        $post = Post::factory()->create(['user_id' => 1]);
+        $owner = User::factory()->create();
+        $nonOwner = User::factory()->create();
 
-        $response = $this->postPolicy->delete($nonOwnerUser, $post);
+        $post = Post::factory()->create([
+            'user_id' => $owner->id,
+            'title' => 'Sample Post',
+            'content' => 'Sample content.',
+        ]);
+
+        $response = $this->postPolicy->delete($nonOwner, $post);
 
         $this->assertFalse($response->allowed());
         $this->assertEquals('You do not own this post.', $response->message());
