@@ -5,7 +5,6 @@ import PostActions from '@/Pages/Post/PostActions';
 import PostDetails from '@/Pages/Post/PostDetails';
 import CommentForm from '@/Pages/Comment/CommentForm';
 import CommentItem from '@/Pages/Comment/CommentItem';
-import { Inertia } from '@inertiajs/inertia';
 import Footer from '@/Pages/Common/Footer';
 
 export default function ShowPost({ auth, post }) {
@@ -21,14 +20,11 @@ export default function ShowPost({ auth, post }) {
 
     const handleDeleteComment = (commentId) => {
         if (confirm('Are you sure you want to delete this comment?')) {
-            Inertia.delete(route('comments.destroy', commentId), {
+            destroy(route('comments.destroy', commentId), {
                 preserveScroll: true,
-                onSuccess: () => {
-                    console.log('Comment deleted successfully.');
-                },
-                onError: () => {
-                    console.error('Failed to delete the comment.');
-                },
+                onError: (errors) => {
+                    window.alert('Error deleting comment:', errors);
+                }
             });
         }
     };
@@ -40,11 +36,12 @@ export default function ShowPost({ auth, post }) {
     const handleCommentSubmit = (e) => {
         e.preventDefault();
         submitComment(route('comments.store', post.id), {
+            preserveScroll: true,
             onSuccess: () => {
                 setData({ comment: '' });
             },
             onError: (errors) => {
-                console.error('Error adding comment:', errors);
+                window.alert('Error adding comment:', errors);
             }
         });
     };
