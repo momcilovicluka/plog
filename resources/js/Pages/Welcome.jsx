@@ -26,7 +26,7 @@ export default function Welcome({ auth, posts = [] }) {
                         <div className="grid gap-8 mt-8 sm:grid-cols-2 lg:grid-cols-3">
                             {posts.length > 0 ? (
                                 posts.map((post) => (
-                                    <PostItem post={post} />
+                                    <PostItem key={post.id} post={post} />
                                 ))
                             ) : (
                                 <p className="text-center text-gray-500 dark:text-gray-400">
