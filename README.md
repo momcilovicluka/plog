@@ -1,6 +1,6 @@
 <div align="center">
     <h1><b>Plog</b></h1>
-    <h3>A blog app made with Laravel and react. 🔥 </h3>
+    <h3>A blog app made with Laravel and React. 🔥 </h3>
     
 ![GitHub Repo stars](https://img.shields.io/github/stars/momcilovicluka/plog?style=for-the-badge&color=ff0050) 
 ![GitHub last commit](https://img.shields.io/github/last-commit/momcilovicluka/plog?style=for-the-badge&color=ff0050) 
@@ -80,6 +80,11 @@ Run seeders to populate the tables with mock data:
 ```bash
 php artisan db:seed
 ```
+⚠ Password for every user is: `password`
+
+All users are randomly generated except following 2 which are always created:
+- guest@gmail.com
+- admin@example.com
 
 ### 7. Test the application! 🧪
 Before running the tests, make sure to createa a db file dedicated to testing.
@@ -116,6 +121,13 @@ You can also run it with docker if you're really keen 🐳:
 docker compose up
 ```
 
+---
+👷‍♂️Currently, there are 2 active Workflows / GitHub Actions:
+- Laravel Test & Format
+  - This workflow pulls the repository, sets up the environment, compiles the code, and executes the tests.
+  - If all tests are successful, Pint will run to fix the code style and create a commit.
+- Lint Code Base
+  - If the previous workflow completes successfully, the super linter will run to ensure everything adheres to the established standards.
 ---
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
