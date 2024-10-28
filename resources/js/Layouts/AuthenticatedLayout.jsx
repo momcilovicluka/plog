@@ -86,7 +86,7 @@ export default function AuthenticatedLayout({ header, children }) {
                     </div>
                 </div>
 
-                <div className={showingNavigationDropdown ? 'block' : 'hidden'} sm:hidden>
+                <div className={`${showingNavigationDropdown ? 'block' : 'hidden'} sm:hidden`}>
                     <div className="space-y-1 pb-3 pt-2">
                         <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>Dashboard</ResponsiveNavLink>
                         <ResponsiveNavLink href={route('posts.index')}>My Posts</ResponsiveNavLink>
