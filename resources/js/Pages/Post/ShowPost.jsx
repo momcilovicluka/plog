@@ -39,7 +39,7 @@ export default function ShowPost({ auth, post }) {
         e.preventDefault();
         submitComment(route('comments.store', post.id), {
             onSuccess: () => {
-                setData({ comment: '' }); // Reset the comment input
+                setData({ comment: '' });
             },
             onError: (errors) => {
                 console.error('Error adding comment:', errors);
