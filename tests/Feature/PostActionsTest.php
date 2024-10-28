@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Models\User;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -16,7 +16,7 @@ class PostActionsTest extends TestCase
         $user = User::factory()->create(['role' => 'user']);
         $post = Post::factory()->create(['user_id' => 1]);
 
-        $response = $this->actingAs($user)->get('/posts/' . $post->id);
+        $response = $this->actingAs($user)->get('/posts/'.$post->id);
 
         $response->assertStatus(200);
         $response->assertDontSee('Delete Post');
@@ -27,7 +27,7 @@ class PostActionsTest extends TestCase
         $owner = User::factory()->create(['role' => 'user']);
         $post = Post::factory()->create(['user_id' => $owner->id]);
 
-        $response = $this->actingAs($owner)->delete('/posts/' . $post->id);
+        $response = $this->actingAs($owner)->delete('/posts/'.$post->id);
 
         $response->assertRedirect('/posts');
         $this->assertDatabaseMissing('posts', ['id' => $post->id]);

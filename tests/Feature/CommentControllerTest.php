@@ -23,7 +23,7 @@ class CommentControllerTest extends TestCase
         $user = User::factory()->create();
         $post = Post::factory()->create();
 
-        $response = $this->actingAs($user)->post('/posts/' . $post->id . '/comments', [
+        $response = $this->actingAs($user)->post('/posts/'.$post->id.'/comments', [
             'comment' => 'This is a test comment.',
         ]);
 
@@ -40,7 +40,7 @@ class CommentControllerTest extends TestCase
         $user = User::factory()->create();
         $post = Post::factory()->create();
 
-        $response = $this->actingAs($user)->post('/posts/' . $post->id . '/comments', [
+        $response = $this->actingAs($user)->post('/posts/'.$post->id.'/comments', [
             'comment' => '',
         ]);
 
@@ -60,7 +60,7 @@ class CommentControllerTest extends TestCase
             return $user->id === $comment->user_id;
         });
 
-        $response = $this->actingAs($user)->delete('/comments/' . $comment->id);
+        $response = $this->actingAs($user)->delete('/comments/'.$comment->id);
 
         $response->assertRedirect()->with('success', 'Comment deleted successfully.');
         $this->assertDatabaseMissing('comments', [
@@ -82,7 +82,7 @@ class CommentControllerTest extends TestCase
             return $user->id === $comment->user_id;
         });
 
-        $response = $this->actingAs($user)->delete('/comments/' . $comment->id);
+        $response = $this->actingAs($user)->delete('/comments/'.$comment->id);
 
         $response->assertStatus(403);
         $this->assertDatabaseHas('comments', [
