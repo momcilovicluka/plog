@@ -5,6 +5,7 @@ import PostActions from '@/Pages/Post/PostActions';
 import PostDetails from '@/Pages/Post/PostDetails';
 import CommentForm from '@/Pages/Comment/CommentForm';
 import CommentItem from '@/Pages/Comment/CommentItem';
+import { Inertia } from '@inertiajs/inertia';
 import Footer from '@/Pages/Common/Footer';
 
 export default function ShowPost({ auth, post }) {
@@ -20,13 +21,14 @@ export default function ShowPost({ auth, post }) {
 
     const handleDeleteComment = (commentId) => {
         if (confirm('Are you sure you want to delete this comment?')) {
-            destroy(route('comments.destroy', commentId), {
+            Inertia.delete(route('comments.destroy', commentId), {
+                preserveScroll: true,
                 onSuccess: () => {
-                    console.log('Comment deleted successfully');
+                    console.log('Comment deleted successfully.');
                 },
-                onError: (errors) => {
-                    console.error('Error deleting comment:', errors);
-                }
+                onError: () => {
+                    console.error('Failed to delete the comment.');
+                },
             });
         }
     };
