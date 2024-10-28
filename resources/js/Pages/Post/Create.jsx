@@ -3,6 +3,7 @@ import { Inertia } from '@inertiajs/inertia';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import PostForm from '@/Pages/Post/PostForm';
 import Footer from '@/Pages/Common/Footer';
+import { Head } from '@inertiajs/react';
 
 export default function Create() {
     const [title, setTitle] = useState('');
@@ -26,6 +27,7 @@ export default function Create() {
 
     return (
         <AuthenticatedLayout>
+            <Head title="Create Post" />
             <div className="container mx-auto mt-8">
                 <h1 className="text-3xl font-bold mb-4 text-blue-400">Create a New Post</h1>
                 <PostForm 

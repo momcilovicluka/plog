@@ -8,7 +8,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 export default function Welcome({ auth, posts = [] }) {
     const content = (
         <>
-            <Head title="My Blog" />
+            <Head title="Plog - Welcome" />
             <div className="bg-gray-100 text-gray-700 dark:bg-gray-900 dark:text-gray-200">
 
                 <div className="relative flex flex-col items-center justify-center min-h-screen px-6 selection:bg-blue-600 selection:text-white">

@@ -6,6 +6,7 @@ import PostDetails from '@/Pages/Post/PostDetails';
 import CommentForm from '@/Pages/Comment/CommentForm';
 import CommentItem from '@/Pages/Comment/CommentItem';
 import Footer from '@/Pages/Common/Footer';
+import { Head } from '@inertiajs/react';
 
 export default function ShowPost({ auth, post }) {
     const isAuthenticated = auth.user !== null;
@@ -48,6 +49,7 @@ export default function ShowPost({ auth, post }) {
 
     const content = (
         <div className="container mx-auto mt-8 bg-gray-900 p-6 rounded-lg shadow-lg">
+            <Head title={`${post.title}`}/>
             <PostDetails post={post} />
 
             <h3 className="text-2xl font-semibold text-gray-200">Comments</h3>
